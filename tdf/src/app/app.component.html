@@ -17,7 +17,8 @@
 		<div class="form-group row">
 			<label class="col-md-1">Phone </label>
 			<input type="text" #phone="ngModel" pattern="^\d{10}$" 
-			[class.is-invalid]="phone.invalid && phone.touched" class="form-control text-size" name="phone"[(ngModel)]="userModel.phone">
+			[class.is-invalid]="phone.invalid && phone.touched" class="form-control text-size" 
+			name="phone"[(ngModel)]="userModel.phone">
 		</div>
 		<div class="form-group">
 			<select class="custom-select my-option" name="topic"[(ngModel)]="userModel.topic">
