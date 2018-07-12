@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { User} from './user';
-import { EnrollmentService } from './enrollment.service'
+import { EnrollmentService } from './enrollment.service';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +10,14 @@ import { EnrollmentService } from './enrollment.service'
 export class AppComponent {
   topics = ['Angular', 'React', 'Vue'];
   topicHasError = true;
-
+  submitted = false;
+  errMessage = '';
   public myOption = "my-option";
 
   public userModel = new User("Moytri", "moytri@gmail.com", "7784952346", 'default', 'morning', false);
 
   //Injected Service
-  construtor (private _enrollmentService: EnrollmentService) {
+  constructor (private _enrollmentService: EnrollmentService) {
 
   }
   validateTopic(value) {
@@ -29,11 +30,13 @@ export class AppComponent {
     }
 
     onSubmit() {
+      this.submitted = true;
     	console.log(this.userModel);
     	this._enrollmentService.enroll(this.userModel)
     	.subscribe(
     		data => console.log('Success!', data),
-    		error => console.log('Error!', error)
+    		error => this.errMessage = error.statusText
+        //console.log('Error!', error)
     	)
     }
 }
