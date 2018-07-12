@@ -11,5 +11,5 @@ export class AppComponent {
 
   public myOption = "my-option";
 
-  public userModel = new User("", "moytri@gmail.com", "7794952346", '', 'morning', false);
+  public userModel = new User("", "moytri@gmail.com", "7784952346", '', 'morning', false);
 }
