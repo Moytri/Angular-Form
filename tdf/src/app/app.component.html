@@ -3,20 +3,21 @@
 	<br>
 	<!-- ngForm is a string value -->
 	<form #userForm="ngForm">
-		{{userForm.value | json }}
+		<!-- {{userForm.value | json }}
 		<hr>
-		{{ userModel | json }}
+		{{ userModel | json }} -->
 		<div class="form-group row">
 			<label class="col-md-1">Name </label>
-			<input type="text" class="form-contrl" name="username" [(ngModel)]="userModel.name">
+			<input type="text" required #name="ngModel" [class.is-invalid]="name.invalid && name.touched" class="form-control text-size" name="username" [(ngModel)]="userModel.name">
 		</div>
 		<div class="form-group row">
 			<label class="col-md-1">Email </label>
-			<input type="text" class="form-contrl" name="email" [(ngModel)]="userModel.email">
+			<input type="text" class="form-control text-size" name="email" [(ngModel)]="userModel.email">
 		</div>
 		<div class="form-group row">
 			<label class="col-md-1">Phone </label>
-			<input type="text" class="form-contrl" name="phone"[(ngModel)]="userModel.phone">
+			<input type="text" #phone="ngModel" pattern="^\d{10}$" 
+			[class.is-invalid]="phone.invalid && phone.touched" class="form-control text-size" name="phone"[(ngModel)]="userModel.phone">
 		</div>
 		<div class="form-group">
 			<select class="custom-select my-option" name="topic"[(ngModel)]="userModel.topic">
